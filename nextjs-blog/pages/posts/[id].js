@@ -1,8 +1,9 @@
 import Layout from "../../components/Layout";
-import { getAllPostsIds, getPostData } from "../../lib/post";
+import { getAllPostIds, getPostData } from "../../lib/post";
 
 export async function getStaticPaths() {
-  const paths = getAllPostsIds();
+  const paths = getAllPostIds();
+  console.log(paths);
   return {
     paths,
     fallback: false,
@@ -10,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData,

@@ -24,22 +24,23 @@ export function getPostsData() {
   return allPostsData;
 }
 
-export function getAllPostsIds() {
+export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/_.md$/, ""),
+        id: fileName.replace(/\.md$/, ""),
       },
     };
   });
+  return allPostsData;
 }
 
 export async function getPostData(id) {
-  const fullPath = path.join(postsDirectory, fileName);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContent = fs.readFileSync(fullPath, "utf8");
 
-  const matterResult = matter(fileContents);
+  const matterResult = matter(fileContent);
 
   const blogContent = await remark().use(html).process(matterResult.content);
 
