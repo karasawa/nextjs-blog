@@ -29,6 +29,7 @@
 }
 
 .borderCircle {
+  background-color: #fff;
   border-radius: 1000px;
 }
 
@@ -57,4 +58,13 @@
 .boldText {
   color: black;
   font-weight: 550;
+}
+
+.bgConfig {
+  background-color: #fff;
+  height: 100vh;
+}
+
+.rmMargin {
+  margin: 0;
 }

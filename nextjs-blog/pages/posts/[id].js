@@ -1,9 +1,10 @@
-import Layout from "../../components/Layout";
+import Head from "next/head";
+import Layout, { siteTitle } from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../lib/post";
+import utilStyles from "../../styles/utils.module.css";
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
-  console.log(paths);
   return {
     paths,
     fallback: false,
@@ -21,8 +22,15 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ postData }) {
   return (
-    <div>
-      <Layout>{postData.title}</Layout>
-    </div>
+    <Layout>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>{postData.date}</div>
+        <div dangerouslySetInnerHTML={{ __html: postData.blogContentHTML }} />
+      </article>
+    </Layout>
   );
 }

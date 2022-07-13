@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import Layout from "../components/Layout";
+import Layout, { siteTitle } from "../components/Layout";
 import utilStyles from "../styles/utils.module.css";
 import { getPostsData } from "../lib/post";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const allPostsData = getPostsData();
@@ -25,9 +26,12 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout>
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
       <section className={utilStyles.headingMd}>
-        <p>私は駆け出しエンジニアです。/好きな言語はjavascriptです。</p>
+        <p>駆け出しエンジニアです。/好きな言語はjavascriptです。</p>
       </section>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

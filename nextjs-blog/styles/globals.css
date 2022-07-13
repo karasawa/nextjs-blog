@@ -22,6 +22,19 @@ a:hover {
   text-decoration: underline;
 }
 
+button {
+  color: #0070f3;
+  border: none;
+  background-color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 img {
   max-width: 100%;
   display: block;
